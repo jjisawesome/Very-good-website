@@ -1,4 +1,43 @@
 <!doctype html>
-<frameset rows='100%, *' frameborder=no framespacing=0 border=0 allow="autoplay">
+<script>
+    var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('youtube-video', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerReady() {
+  console.log("hey Im ready");
+  //do whatever you want here. Like, player.playVideo();
+}
+
+function onPlayerStateChange() {
+  console.log("my state changed");
+}
+
+document.getElementById("mute").addEventListener('click', function(event) {
+  console.log(player);
+
+  if (player.isMuted()) {
+    player.unMute();
+  } else {
+    player.mute();
+  }
+});
+</script>
+<p>
+  <button id="mute">Mute/UnMute</button>
+</p>
+<frameset rows='50%, *' frameborder=no framespacing=0 border=0 allow="autoplay">
     <frame src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" name=mainwindow frameborder=no framespacing=0 marginheight=0 marginwidth=0></frame>
 </frameset>
