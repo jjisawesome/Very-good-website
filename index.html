@@ -25,15 +25,6 @@ function onPlayerStateChange() {
   console.log("my state changed");
 }
 
-document.getElementById("mute").addEventListener('click', function(event) {
-  console.log(player);
-
-  if (player.isMuted()) {
-    player.unMute();
-  } else {
-    player.mute();
-  }
-});
 
 function liveunmute() {
    if (player.isMuted()) {
