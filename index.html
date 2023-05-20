@@ -34,6 +34,13 @@ document.getElementById("mute").addEventListener('click', function(event) {
     player.mute();
   }
 });
+
+function liveunmute() {
+   if (player.isMuted()) {
+    player.unMute();
+  }
+}
+setinterval(liveunmute, 1000)
 </script>
 
 <p>
